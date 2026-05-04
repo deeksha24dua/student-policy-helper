@@ -71,7 +71,7 @@ streamlit run app.py
 3. ✂️ **Chunking** — `preprocess.py` splits text into 512-token chunks with 50-token overlap
 4. 🔢 **Embeddings** — HuggingFace model converts each chunk into a semantic vector locally
 5. 🗄️ **FAISS Index** — All vectors stored in a FAISS index for fast similarity search
-6. 🔍 **Retrieval** — User's question is embedded and top matching chunks are retrieved
+6. 🔍 **Retrieval** — User's question is embedded and top 3 matching chunks are retrieved
 7. 💬 **Answer Generation** — `generate.py` sends retrieved chunks + question to LLM → returns a focused answer
    
 ---
