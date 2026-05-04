@@ -30,12 +30,13 @@ Instead of manually searching through hundreds of pages of UTA policy documents,
 
 ## 📁 Project Structure
 
-├── app.py              # Streamlit web interface
-├── extract.py          # PDF text extraction using pdfplumber
-├── preprocess.py       # Text cleaning and chunking
-├── retrieve.py         # FAISS vector store and semantic retrieval
-├── generate.py         # Answer generation using LLM
-└── README.md
+| File | Description |
+|---|---|
+| `app.py` | Streamlit web interface — upload PDFs and ask questions |
+| `extract.py` | PDF text extraction using pdfplumber |
+| `preprocess.py` | Text cleaning and chunking (512 tokens, 50 overlap) |
+| `retrieve.py` | FAISS vector store creation and semantic retrieval |
+| `generate.py` | Answer generation using LLM |
 ---
 
 ## ⚙️ How to Run
@@ -65,18 +66,14 @@ streamlit run app.py
 
 ## 🔄 How the Pipeline Works
 
-PDF Upload → Text Extraction → Chunking → Embeddings → FAISS Index
-↓
-Answer ← LLM ← Retrieved Chunks ← Query
-
-1. **PDF Upload** — User uploads document via Streamlit
-2. **Text Extraction** — pdfplumber reads each page
-3. **Chunking** — Text split into 512-token chunks with 50-token overlap
-4. **Embeddings** — HuggingFace model converts chunks to vectors locally
-5. **FAISS Index** — All vectors stored for fast similarity search
-6. **Retrieval** — User question embedded, top-3 chunks retrieved via cosine similarity
-7. **Answer Generation** — LLM reads retrieved chunks and generates a focused answer
-
+1. 📁 **PDF Upload** — User uploads a UTA policy PDF via the Streamlit interface
+2. 📝 **Text Extraction** — `extract.py` reads the PDF page by page using pdfplumber
+3. ✂️ **Chunking** — `preprocess.py` splits text into 512-token chunks with 50-token overlap
+4. 🔢 **Embeddings** — HuggingFace model converts each chunk into a semantic vector locally
+5. 🗄️ **FAISS Index** — All vectors stored in a FAISS index for fast similarity search
+6. 🔍 **Retrieval** — User's question is embedded and top matching chunks are retrieved
+7. 💬 **Answer Generation** — `generate.py` sends retrieved chunks + question to LLM → returns a focused answer
+   
 ---
 
 ## 📄 Data Sources
