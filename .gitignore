@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# FAISS index
+faiss_index/
+
+# Environment
+venv/
