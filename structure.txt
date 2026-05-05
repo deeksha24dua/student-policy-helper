@@ -5,14 +5,10 @@ student-policy-helper/
 ├── preprocess.py
 ├── retrieve.py
 ├── generate.py
-├── config.py
 ├── requirements.txt
-├── .env
 ├── README.md
 │
 ├── data/
 │   └── raw_pdfs/
 │       └── 2025-2026.pdf
 |       └── data/Handbook of Operating Policies Procedure.pdf
-│
-└── faiss_index/
